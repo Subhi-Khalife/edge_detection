@@ -32,6 +32,11 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
     namespace = "com.sample.edgedetectionexample"
     compileSdkVersion 34
 
@@ -45,9 +50,6 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
     }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
